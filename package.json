@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/SidathDabare/Backend-Day-15-MongoDB-Market-Place/issues"
   },
-  "homepage": "https://github.com/SidathDabare/Backend-Day-15-MongoDB-Market-Place#readme"
+  "homepage": "https://github.com/SidathDabare/Backend-Day-15-MongoDB-Market-Place#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
 }
