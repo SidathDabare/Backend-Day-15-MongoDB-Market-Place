@@ -17,7 +17,7 @@ const productsSchema = new Schema(
       enum: ["smart phones", "computer", "books"],
     },
 
-    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "reviews" }],
     // content: { type: String, required: false },
     //commentHistory: [{ comment: String, rate: Number, created_At: Date }],
   },
