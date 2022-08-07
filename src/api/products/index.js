@@ -66,7 +66,7 @@ productRouter.put("/:productId", async (req, res, next) => {
     const updateProduct = await ProductModel.findByIdAndUpdate(
       req.params.productId,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: false }
     )
 
     if (updateProduct) {

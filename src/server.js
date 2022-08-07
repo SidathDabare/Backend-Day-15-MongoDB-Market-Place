@@ -23,7 +23,7 @@ server.use(express.json())
 
 // ************************************ ENDPOINTS ****************************************
 server.use("/products", productRouter)
-server.use("/reviews", reviewRouter)
+server.use("/products", reviewRouter)
 server.use("/users", usersRouter)
 
 // ********************************* ERROR HANDLERS **************************************
