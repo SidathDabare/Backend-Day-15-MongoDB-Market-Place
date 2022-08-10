@@ -8,7 +8,7 @@ const cartsSchema = new Schema(
     status: { type: String, required: true, enum: ["Active", "Paid"] },
     products: [
       {
-        productId: { type: mongoose.Types.ObjectId, ref: "products" },
+        productId: { type: mongoose.Types.ObjectId, ref: "Products" },
         quantity: { type: Number, required: true },
       },
     ],

@@ -4,7 +4,7 @@ import express from "express"
 import createHttpError from "http-errors"
 import UsersModel from "./model.js"
 import CartsModel from "./cartsModel.js"
-import ProductModel from "../products/model.js"
+import ProductsModel from "../products/model.js"
 //import BooksModel from "../books/model.js"
 //import LikeModel from "./likesModel.js"
 
@@ -187,58 +187,52 @@ usersRouter.post("/:userId/cart", async (req, res, next) => {
   // The purpose of this endpoint is to add an item (and quantity) to the Active cart of the specified user
   try {
     // 0. We gonna receive bookId and the quantity in req.body
-    const { productId, quantity } = req.body
-    console.log(productId)
+    const { product_Id, quantity } = req.body
+    console.log(product_Id)
 
     // 1. Does the user exist? If not --> 404
     const user = await UsersModel.findById(req.params.userId)
+    //console.log(user)
     if (!user)
       return next(
         createHttpError(404, `User with id ${req.params.userId} not found!`)
       )
 
     // 2. Does the product exist? If not --> 404
-    const purchasedProduct = await ProductModel.findById(productId)
+    const purchasedProduct = await ProductsModel.findById(product_Id)
+    //console.log(purchasedProduct)
     if (!purchasedProduct)
       return next(
-        createHttpError(404, `Product with id ${productId} not found!`)
+        createHttpError(404, `Product with id ${product_Id} not found!`)
       )
 
     // 3. Is the product already in the ACTIVE cart of the specified user?
-    const isProductThere = await ProductModel.findOne({
+    const isProductThere = await ProductsModel.findOne({
       owner: req.params.userId,
       status: "Active",
-      "products.productId": productId,
+      "products.productId": product_Id,
     })
-
+    //console.log(isProductThere)
     if (isProductThere) {
-      // 3.1 If the product is already there --> increase the quantity
-
-      /* In plain JS we would do the things in this way:
-        - find the index of the element in products array --> In Monogo we can use the POISTIONAL OPERATOR $ which represents the index of the element of the array that matches the condition you specified in the query
-        - products[index].quantity += quantity --> products[$].quantity += quantity or in Mongo syntax "products.$.quantity"
-        - save it back
-      
-      */
       const modifiedCart = await CartsModel.findOneAndUpdate(
         {
           owner: req.params.userId,
           status: "Active",
-          "products.productId": productId,
+          "products.productId": product_Id,
         }, // WHAT we want to modify
         { $inc: { "products.$.quantity": quantity } }, // HOW we want to modify
         { new: true, runValidators: true } // OPTIONS
       )
-
+      console.log("if CART", modifiedCart)
       res.send(modifiedCart)
     } else {
       // 3.2 If it is not --> add it to cart (if the cart exists)
       const modifiedCart = await CartsModel.findOneAndUpdate(
         { owner: req.params.userId, status: "Active" }, // WHAT
-        { $push: { products: { productId: productId, quantity } } }, // HOW
+        { $push: { products: { productId: product_Id, quantity } } }, // HOW
         { new: true, runValidators: true, upsert: true } // OPTIONS, upsert: true does mean that if the active cart of that user is NOT found --> Please Mongo create that automagically (also with the product in it)
       )
-
+      console.log("if NOT", modifiedCart)
       res.send(modifiedCart)
     }
   } catch (error) {

@@ -17,7 +17,7 @@ const productsSchema = new Schema(
       enum: ["smart phones", "computer", "books"],
     },
 
-    reviews: [{ type: Schema.Types.ObjectId, ref: "reviews" }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Reviews" }],
     // content: { type: String, required: false },
     //commentHistory: [{ comment: String, rate: Number, created_At: Date }],
   },
@@ -25,4 +25,4 @@ const productsSchema = new Schema(
     timestamps: true,
   }
 )
-export default model("products", productsSchema)
+export default model("Products", productsSchema)
