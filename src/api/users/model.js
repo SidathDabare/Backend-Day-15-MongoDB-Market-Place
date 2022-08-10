@@ -10,7 +10,7 @@ const usersSchema = new Schema(
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
-    age: { type: Number, required: true, min: 18, max: 65 },
+    //age: { type: Number, required: true, min: 18, max: 65 },
     professions: [String],
     address: {
       street: { type: String },

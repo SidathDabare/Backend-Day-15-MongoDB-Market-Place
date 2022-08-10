@@ -31,12 +31,14 @@ productRouter.get("/", async (req, res, next) => {
       .populate({ path: "reviews" }) //http://localhost:3001/products?title=Windows Internals1
     //.populate({ path: "authors", select: "firstName lastName" }) //http://localhost:3001/products?title=Windows Internals1
     // return { totalProducts, products }
-    res.send({
-      links: mongoQuery.links("http://localhost:3001/products", totalProducts),
-      totalProducts,
-      totalPages: Math.ceil(totalProducts / mongoQuery.options.limit),
-      products,
-    })
+    // res.send({
+    //   links: mongoQuery.links("http://localhost:3001/products", totalProducts),
+    //   totalProducts,
+    //   totalPages: Math.ceil(totalProducts / mongoQuery.options.limit),
+    //   products,
+    // })
+    const totalPages = Math.ceil(totalProducts / mongoQuery.options.limit)
+    res.send({ totalProducts, totalPages, products })
   } catch (error) {
     next(error)
   }
