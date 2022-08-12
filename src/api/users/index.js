@@ -3,11 +3,13 @@
 import express from "express"
 import createHttpError from "http-errors"
 import UsersModel from "./model.js"
-import CartsModel from "./cartsModel.js"
 import ProductsModel from "../products/model.js"
+import CartsModel from "./cartsModel.js"
 //import BooksModel from "../books/model.js"
 //import LikeModel from "./likesModel.js"
-
+console.log({ ProductsModel })
+console.log({ UsersModel })
+console.log({ CartsModel })
 const usersRouter = express.Router()
 
 usersRouter.post("/", async (req, res, next) => {
@@ -207,7 +209,7 @@ usersRouter.post("/:userId/cart", async (req, res, next) => {
       )
 
     // 3. Is the product already in the ACTIVE cart of the specified user?
-    const isProductThere = await ProductsModel.findOne({
+    const isProductThere = await CartsModel.findOne({
       owner: req.params.userId,
       status: "Active",
       "products.productId": product_Id,
@@ -223,7 +225,7 @@ usersRouter.post("/:userId/cart", async (req, res, next) => {
         { $inc: { "products.$.quantity": quantity } }, // HOW we want to modify
         { new: true, runValidators: true } // OPTIONS
       )
-      console.log("if CART", modifiedCart)
+      //console.log("if CART", modifiedCart)
       res.send(modifiedCart)
     } else {
       // 3.2 If it is not --> add it to cart (if the cart exists)
@@ -232,7 +234,7 @@ usersRouter.post("/:userId/cart", async (req, res, next) => {
         { $push: { products: { productId: product_Id, quantity } } }, // HOW
         { new: true, runValidators: true, upsert: true } // OPTIONS, upsert: true does mean that if the active cart of that user is NOT found --> Please Mongo create that automagically (also with the product in it)
       )
-      console.log("if NOT", modifiedCart)
+      //console.log("if NOT", modifiedCart)
       res.send(modifiedCart)
     }
   } catch (error) {
