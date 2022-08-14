@@ -14,7 +14,7 @@ const productsSchema = new Schema(
     category: {
       type: String,
       required: true,
-      enum: ["smart phones", "computer", "books"],
+      enum: ["electronics", "computer", "books"],
     },
 
     reviews: [{ type: Schema.Types.ObjectId, ref: "Reviews" }],

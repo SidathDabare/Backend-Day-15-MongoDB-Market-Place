@@ -7,6 +7,7 @@ import mongoose from "mongoose"
 import productRouter from "./api/products/index.js"
 import reviewRouter from "./api/reviews/index.js"
 import usersRouter from "./api/users/index.js"
+import filesRouter from "./api/files/index.js"
 
 import {
   badRequestHandler,
@@ -25,6 +26,7 @@ server.use(express.json())
 server.use("/products", productRouter)
 server.use("/products", reviewRouter)
 server.use("/users", usersRouter)
+server.use("/file", filesRouter)
 
 // ********************************* ERROR HANDLERS **************************************
 server.use(badRequestHandler)
