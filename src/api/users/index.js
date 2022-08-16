@@ -5,6 +5,8 @@ import createHttpError from "http-errors"
 import UsersModel from "./model.js"
 import ProductsModel from "../products/model.js"
 import CartsModel from "./cartsModel.js"
+import { sendRegistrationEmail } from "../../lib/email-tools.js"
+import cartsModel from "./cartsModel.js"
 //import BooksModel from "../books/model.js"
 //import LikeModel from "./likesModel.js"
 console.log({ ProductsModel })
@@ -237,6 +239,33 @@ usersRouter.post("/:userId/cart", async (req, res, next) => {
       //console.log("if NOT", modifiedCart)
       res.send(modifiedCart)
     }
+  } catch (error) {
+    next(error)
+  }
+})
+usersRouter.get("/:userId/cart", async (req, res, next) => {
+  // The purpose of this endpoint is to add an item (and quantity) to the Active cart of the specified user
+  try {
+    const user = await cartsModel.find()
+    console.log(user)
+
+    if (user) {
+      res.send(user)
+    } else {
+      next(createHttpError(404, `User with id ${req.params.userId} not found!`))
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+usersRouter.post("/register", async (req, res, next) => {
+  try {
+    // 1. receive user's data from req.body
+    const { email } = req.body
+    // 2. save new user in db
+    // 3. send email to new user
+    await sendRegistrationEmail(email)
+    res.send({ message: "User registered and email sent!" })
   } catch (error) {
     next(error)
   }

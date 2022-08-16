@@ -3,6 +3,7 @@
 import express from "express"
 import multer from "multer"
 import { extname } from "path"
+
 // import {
 //   saveProducts,
 //   getBooksReadableStream,
@@ -11,6 +12,8 @@ import { extname } from "path"
 import { v2 as cloudinary } from "cloudinary"
 import { CloudinaryStorage } from "multer-storage-cloudinary"
 import { pipeline } from "stream"
+import { getPDFReadableStream } from "../../lib/pdf-tools.js"
+import { getProducts } from "../../lib/fs.tools.js"
 //import { createGzip } from "zlib"
 //import { getPDFReadableStream } from "../../lib/pdf-tools.js"
 
@@ -25,6 +28,20 @@ const cloudinaryUploader = multer({
 }).single("image")
 
 const filesRouter = express.Router()
+
+filesRouter.post("/cloudinary", cloudinaryUploader, async (req, res, next) => {
+  try {
+    console.log("REQ FILE: ", req.file)
+
+    // 1. upload on Cloudinary happens automatically
+    // 2. req.file contains the path which is the url where to find that picture
+    // 3. update the resource by adding the path to it
+    //res.send("UPLOADED")
+    res.status(201).send({ url: req.file.path })
+  } catch (error) {
+    next(error)
+  }
+})
 
 // filesRouter.post(
 //   "/products/:id",
@@ -47,19 +64,6 @@ const filesRouter = express.Router()
 //     }
 //   }
 // )
-filesRouter.post("/cloudinary", cloudinaryUploader, async (req, res, next) => {
-  try {
-    console.log("REQ FILE: ", req.file)
-
-    // 1. upload on Cloudinary happens automatically
-    // 2. req.file contains the path which is the url where to find that picture
-    // 3. update the resource by adding the path to it
-    //res.send("UPLOADED")
-    res.status(201).send({ url: req.file.path })
-  } catch (error) {
-    next(error)
-  }
-})
 
 // filesRouter.post(
 //   "/uploadCover/:id",
@@ -120,22 +124,23 @@ filesRouter.post("/cloudinary", cloudinaryUploader, async (req, res, next) => {
 //     next(error)
 //   }
 // })
-// filesRouter.get("/PDF", async (req, res, next) => {
-//   try {
-//     // SOURCE ( PDF Readable Stream) --> DESTINATION (http response)
+filesRouter.get("/PDF", async (req, res, next) => {
+  try {
+    // SOURCE ( PDF Readable Stream) --> DESTINATION (http response)
 
-//     const products = await getProducts()
+    const data = await getProducts()
+    //console.log("PRODUCTS", data)
 
-//     res.setHeader("Content-Disposition", "attachment; filename=products.pdf")
-//     // const source = getPDFReadableStream(products)
-//     const source = getPDFReadableStream(products[0])
-//     const destination = res
-//     pipeline(source, destination, (err) => {
-//       if (err) console.log(err)
-//     })
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+    res.setHeader("Content-Disposition", "attachment; filename=products.pdf")
+    // const source = getPDFReadableStream(products)
+    const source = getPDFReadableStream(data[0].products[0])
+    const destination = res
+    pipeline(source, destination, (err) => {
+      if (err) console.log(err)
+    })
+  } catch (error) {
+    next(error)
+  }
+})
 
 export default filesRouter

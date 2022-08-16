@@ -1,0 +1,152 @@
+[
+  {
+    "totalProducts": 4,
+    "totalPages": null,
+    "products": [
+      {
+        "_id": "62ece77720096d006383598f",
+        "name": "Motorola Razr 5G",
+        "description": "5G - Universal Unlocked - Compatible with all major U.S. carriers, including Verizon, AT&T, Sprint and T-Mobile. Also compatible with prepaid carriers including Cricket Wireless, Metro by T-Mobile, Google Fi, Simple Mobile, Total Wireless, Tracfone, Net10, Mint, and H2O.",
+        "brand": "Motorolas",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71u7mwY7FVL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+        "price": 1399,
+        "category": "smart phones",
+        "reviews": [
+          {
+            "_id": "62eff9b303b34b1ecf4f14dc",
+            "comment": "Wow",
+            "rate": 3,
+            "createdAt": "2022-08-07T17:43:15.441Z",
+            "updatedAt": "2022-08-13T09:26:37.641Z",
+            "__v": 0
+          },
+          {
+            "_id": "62f77482057fdb87f714e393",
+            "comment": "Amazing",
+            "rate": 1,
+            "createdAt": "2022-08-13T09:53:06.072Z",
+            "updatedAt": "2022-08-13T09:53:06.072Z",
+            "__v": 0
+          }
+        ],
+        "createdAt": "2022-08-05T09:48:39.618Z",
+        "updatedAt": "2022-08-13T09:53:19.725Z",
+        "__v": 0
+      },
+      {
+        "_id": "62ecf07a76539a7a4593ef5c",
+        "name": "Motorola Razr 5G",
+        "description": "5G - Universal Unlocked - Compatible with all major U.S. carriers, including Verizon, AT&T, Sprint and T-Mobile. Also compatible with prepaid carriers including Cricket Wireless, Metro by T-Mobile, Google Fi, Simple Mobile, Total Wireless, Tracfone, Net10, Mint, and H2O.",
+        "brand": "Motorolas",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61uAwNHHgaL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+        "price": 1399,
+        "category": "smart phones",
+        "reviews": [
+          {
+            "_id": "62effaa203b34b1ecf4f14e4",
+            "comment": "Amazing",
+            "rate": 4,
+            "createdAt": "2022-08-07T17:47:14.766Z",
+            "updatedAt": "2022-08-12T10:39:18.693Z",
+            "__v": 0
+          },
+          {
+            "_id": "62f62de23685a1abbdbd2edc",
+            "comment": "Wowwww",
+            "rate": 3,
+            "createdAt": "2022-08-12T10:39:30.774Z",
+            "updatedAt": "2022-08-12T10:42:09.318Z",
+            "__v": 0
+          },
+          {
+            "_id": "62f9174ad05ab6e297d5c106",
+            "comment": "Wow",
+            "rate": 1,
+            "createdAt": "2022-08-14T15:39:54.853Z",
+            "updatedAt": "2022-08-14T15:39:54.853Z",
+            "__v": 0
+          }
+        ],
+        "createdAt": "2022-08-05T10:27:06.847Z",
+        "updatedAt": "2022-08-14T15:39:54.908Z",
+        "__v": 0
+      },
+      {
+        "_id": "62ecf07c76539a7a4593ef5e",
+        "name": "Motorola Razr 5G",
+        "description": "5G - Universal Unlocked - Compatible with all major U.S. carriers, including Verizon, AT&T, Sprint and T-Mobile. Also compatible with prepaid carriers including Cricket Wireless, Metro by T-Mobile, Google Fi, Simple Mobile, Total Wireless, Tracfone, Net10, Mint, and H2O.",
+        "brand": "Motorolas",
+        "imageUrl": "https://m.media-amazon.com/images/I/61i3D3EG3+L._AC_SX679_.jpg",
+        "price": 1399,
+        "category": "smart phones",
+        "reviews": [
+          {
+            "_id": "62f77060057fdb87f714bbaf",
+            "comment": "Wow",
+            "rate": 1,
+            "createdAt": "2022-08-13T09:35:28.449Z",
+            "updatedAt": "2022-08-13T09:35:28.449Z",
+            "__v": 0
+          },
+          {
+            "_id": "62f77065057fdb87f714bbb8",
+            "comment": "Amazing",
+            "rate": 1,
+            "createdAt": "2022-08-13T09:35:33.405Z",
+            "updatedAt": "2022-08-13T09:35:33.405Z",
+            "__v": 0
+          }
+        ],
+        "createdAt": "2022-08-05T10:27:08.450Z",
+        "updatedAt": "2022-08-13T09:35:33.443Z",
+        "__v": 0
+      },
+      {
+        "_id": "62ecf07d76539a7a4593ef60",
+        "name": "Motorola Razr 5g",
+        "description": "Universal Unlocked - Compatible with all major U.S. carriers, including Verizon, AT&T, Sprint and T-Mobile. Also compatible with prepaid carriers including Cricket Wireless, Metro by T-Mobile, Google Fi, Simple Mobile, Total Wireless, Tracfone, Net10, Mint, and H2O.",
+        "brand": "Motorola",
+        "imageUrl": "https://res.cloudinary.com/db8dxmiin/image/upload/v1660491498/productsImages/y0gjw4fthasu9dusadot.jpg",
+        "price": 139,
+        "category": "electronics",
+        "reviews": [
+          {
+            "_id": "62effb3503b34b1ecf4f14ff",
+            "comment": "Wow",
+            "rate": 2,
+            "createdAt": "2022-08-07T17:49:41.272Z",
+            "updatedAt": "2022-08-07T17:49:41.272Z",
+            "__v": 0
+          },
+          {
+            "_id": "62effb3603b34b1ecf4f1502",
+            "comment": "Amazing",
+            "rate": 3,
+            "createdAt": "2022-08-07T17:49:42.330Z",
+            "updatedAt": "2022-08-12T15:08:58.684Z",
+            "__v": 0
+          },
+          {
+            "_id": "62effb4a03b34b1ecf4f1505",
+            "comment": "Nice",
+            "rate": 2,
+            "createdAt": "2022-08-07T17:50:02.268Z",
+            "updatedAt": "2022-08-07T17:50:02.268Z",
+            "__v": 0
+          },
+          {
+            "_id": "62f673a99636eec115d131a0",
+            "comment": "Amazing",
+            "rate": 1,
+            "createdAt": "2022-08-12T15:37:13.389Z",
+            "updatedAt": "2022-08-12T15:37:13.389Z",
+            "__v": 0
+          }
+        ],
+        "createdAt": "2022-08-05T10:27:09.432Z",
+        "updatedAt": "2022-08-14T15:38:17.615Z",
+        "__v": 0
+      }
+    ]
+  }
+]
